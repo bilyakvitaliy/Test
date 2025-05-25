@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 import pytest
 import os
 
-# Page Object Model
 class LoginPage:
     def __init__(self, driver):
         self.driver = driver
@@ -23,7 +22,6 @@ class LoginPage:
     def is_error_displayed(self):
         return self.driver.find_element(*self.error_msg).is_displayed()
 
-# Фікстура для запуску WebDriver
 @pytest.fixture
 def driver():
     options = webdriver.ChromeOptions()
@@ -33,7 +31,6 @@ def driver():
     yield driver
     driver.quit()
 
-# Тест з неправильними даними
 def test_login_fail(driver):
     page = LoginPage(driver)
     page.load("index.html")  # файл повинен бути поруч
